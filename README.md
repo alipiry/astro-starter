@@ -7,6 +7,7 @@ A modern, SEO-optimized Astro starter template with comprehensive meta tags, soc
 - **🎯 SEO Optimized**: Complete OpenGraph, Twitter Cards, and meta tag setup
 - **🔍 Search Engine Friendly**: Automated sitemap and robots.txt generation
 - **⚡ Modern Tooling**: ESLint, Prettier, and TypeScript configuration
+- **🚀 CI/CD Ready**: GitHub Actions workflows for quality checks and builds
 - **🎨 Clean Architecture**: Organized component structure with layouts
 - **🌐 Social Media Integration**: Twitter and OpenGraph meta tags configured
 
@@ -14,6 +15,10 @@ A modern, SEO-optimized Astro starter template with comprehensive meta tags, soc
 
 ```text
 /
+├── .github/                   # GitHub workflows and templates
+│   └── workflows/             # CI/CD automation
+│       ├── quality.yml        # Code quality checks
+│       ├── build.yml          # Build verification
 ├── public/                    # Static assets
 │   ├── favicon.ico            # Traditional favicon
 │   ├── favicon-16x16.png      # Browser favicon (16x16)
@@ -35,6 +40,8 @@ A modern, SEO-optimized Astro starter template with comprehensive meta tags, soc
 ├── astro.config.mjs           # Astro configuration
 ├── eslint.config.mjs          # ESLint configuration
 ├── tsconfig.json              # TypeScript configuration
+├── .prettierrc.mjs            # Prettier configuration
+├── .prettierignore            # Prettier ignore patterns
 ├── .env.example               # Environment variables template
 └── package.json
 ```
@@ -137,34 +144,40 @@ The `Layout.astro` includes comprehensive SEO setup:
 
 ## 🌐 Deployment
 
-This starter includes automated GitHub Actions workflows for:
+This starter includes automated GitHub Actions workflows for continuous integration and deployment:
 
-### **Continuous Integration**
+### **GitHub Workflows**
 
-- **Code Quality** (`quality.yml`): Runs first on push/PR to main/develop
+The `.github/workflows/` directory contains the following CI/CD pipelines:
+
+- **Code Quality** (`quality.yml`): Automated code quality checks
+  - Runs on push/PR to main/develop branches
   - TypeScript checking with `astro check`
   - ESLint code linting
   - Prettier formatting validation
   - Security audit with `bun audit`
 
-- **Build** (`build.yml`): Runs after Code Quality passes
-  - Waits for Code Quality workflow to succeed
-  - Builds the project with Bun to validate compilation
+- **Build** (`build.yml`): Build verification
+  - Runs after Code Quality workflow completes successfully
+  - Uses Bun to install dependencies and build the project
+  - Validates that the project compiles correctly
 
-### **Ready for other platforms:**
+### **Deployment Options**
 
-- **Netlify**: Zero-config deployment
-- **Vercel**: Automatic builds from Git
+**Recommended platforms:**
+
+- **Vercel**: Zero-config deployment with Git integration
+- **Netlify**: Automatic builds from repository
+- **GitHub Pages**: Static site hosting
 - **Any static hosting provider**
 
-### **GitHub Actions Setup**
+### **Setup Instructions**
 
-1. **Workflows run automatically** with quality gates:
-   - Code Quality runs first on push/PR
-   - Build & Test runs only after quality checks pass
+1. **GitHub Actions** run automatically on push/PR:
+   - Quality checks must pass before builds run
    - Failed quality checks prevent unnecessary builds
 
-2. **For Vercel deployment** (recommended):
+2. **For Vercel deployment**:
    - Connect repository to Vercel
    - Set `PUBLIC_SITE_URL` environment variable in Vercel dashboard
    - Vercel will build directly from source
