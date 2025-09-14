@@ -1,22 +1,115 @@
+---
+import { SEO } from "astro-seo";
+
+const siteUrl = import.meta.env.PUBLIC_SITE_URL;
+
+const { title = "Astro Starter", description = "Astro Starter" } = Astro.props;
+---
+
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
-	</head>
-	<body>
-		<slot />
-	</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <SEO
+      title={title}
+      titleTemplate="%s | Astro Starter"
+      description={description}
+      canonical={Astro.url.toString()}
+      openGraph={{
+        basic: {
+          title: title || "Astro Starter",
+          type: "website",
+          image: `${siteUrl}/og.png`,
+          url: Astro.url.toString(),
+        },
+        image: {
+          alt: "Astro Starter",
+          width: 1600,
+          height: 800,
+          type: "image/png",
+        },
+        optional: {
+          description,
+          siteName: "Astro Starter",
+          locale: "en_US",
+        },
+      }}
+      twitter={{
+        card: "summary_large_image",
+        site: "@alipiry",
+        creator: "@alipiry",
+        title: title || "Astro Starter",
+        description,
+        image: `${siteUrl}/og.png`,
+        imageAlt: "Astro Starter",
+      }}
+      extend={{
+        meta: [
+          { name: "author", content: "Ali Piry" },
+          {
+            name: "keywords",
+            content:
+              "astro, web development, javascript, typescript, modern web",
+          },
+          { name: "robots", content: "index, follow" },
+          { name: "googlebot", content: "index, follow" },
+          { name: "theme-color", content: "#000000" },
+          { name: "msapplication-TileColor", content: "#000000" },
+          { property: "og:locale", content: "en_US" },
+          { property: "og:site_name", content: "Astro Starter" },
+        ],
+        link: [
+          {
+            rel: "apple-touch-icon",
+            sizes: "180x180",
+            href: "/apple-touch-icon.png",
+          },
+          {
+            rel: "icon",
+            type: "image/png",
+            sizes: "32x32",
+            href: "/favicon-32x32.png",
+          },
+          {
+            rel: "icon",
+            type: "image/png",
+            sizes: "16x16",
+            href: "/favicon-16x16.png",
+          },
+          {
+            rel: "icon",
+            type: "image/x-icon",
+            href: "/favicon.ico",
+          },
+          {
+            rel: "icon",
+            type: "image/png",
+            sizes: "192x192",
+            href: "/android-chrome-192x192.png",
+          },
+          {
+            rel: "icon",
+            type: "image/png",
+            sizes: "512x512",
+            href: "/android-chrome-512x512.png",
+          },
+        ],
+      }}
+    />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+  </head>
+  <body>
+    <slot />
+  </body>
 </html>
 
 <style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
+  html,
+  body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+  }
 </style>
