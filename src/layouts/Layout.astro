@@ -3,7 +3,7 @@ import { SEO } from "astro-seo";
 
 const siteUrl = import.meta.env.PUBLIC_SITE_URL;
 
-const { title = "Astro Starter", description = "Astro Starter" } = Astro.props;
+const { title, description = "Astro Starter" } = Astro.props;
 ---
 
 <!doctype html>
@@ -13,6 +13,7 @@ const { title = "Astro Starter", description = "Astro Starter" } = Astro.props;
     <meta name="viewport" content="width=device-width" />
     <SEO
       title={title}
+      titleDefault="Astro Starter"
       titleTemplate="%s | Astro Starter"
       description={description}
       canonical={Astro.url.toString()}
