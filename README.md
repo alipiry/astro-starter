@@ -78,14 +78,19 @@ A modern, SEO-optimized Astro starter template with comprehensive meta tags, soc
 
 ## 📋 Available Commands
 
-| Command               | Action                                           |
-| :-------------------- | :----------------------------------------------- |
-| `bun install`         | Installs dependencies                            |
-| `bun dev`             | Starts local dev server at `localhost:4321`      |
-| `bun build`           | Build your production site to `./dist/`          |
-| `bun preview`         | Preview your build locally, before deploying     |
-| `bun astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `bun astro -- --help` | Get help using the Astro CLI                     |
+| Command                | Action                                           |
+| :--------------------- | :----------------------------------------------- |
+| `bun install`          | Installs dependencies                            |
+| `bun dev`              | Starts local dev server at `localhost:4321`      |
+| `bun build`            | Build your production site to `./dist/`          |
+| `bun preview`          | Preview your build locally, before deploying     |
+| `bun run lint`         | Run ESLint to check code quality                 |
+| `bun run lint:fix`     | Fix ESLint issues automatically                  |
+| `bun run format`       | Format code with Prettier                        |
+| `bun run format:check` | Check if code is properly formatted              |
+| `bun run type-check`   | Run Astro's TypeScript checker                   |
+| `bun astro ...`        | Run CLI commands like `astro add`, `astro check` |
+| `bun astro -- --help`  | Get help using the Astro CLI                     |
 
 ## 🔧 Configuration
 
@@ -132,12 +137,47 @@ The `Layout.astro` includes comprehensive SEO setup:
 
 ## 🌐 Deployment
 
-This starter is ready for deployment on:
+This starter includes automated GitHub Actions workflows for:
+
+### **Continuous Integration**
+
+- **Code Quality** (`quality.yml`): Runs first on push/PR to main/develop
+  - TypeScript checking with `astro check`
+  - ESLint code linting
+  - Prettier formatting validation
+  - Security audit with `bun audit`
+
+- **Build & Test** (`build.yml`): Runs after Code Quality passes
+  - Waits for Code Quality workflow to succeed
+  - Builds the project with Bun to validate compilation
+  - Lighthouse CI performance testing on PRs
+  - No artifact storage (optimized for Vercel deployment)
+
+### **Ready for other platforms:**
 
 - **Netlify**: Zero-config deployment
 - **Vercel**: Automatic builds from Git
-- **GitHub Pages**: Static site hosting
 - **Any static hosting provider**
+
+### **GitHub Actions Setup**
+
+1. **Workflows run automatically** with quality gates:
+   - Code Quality runs first on push/PR
+   - Build & Test runs only after quality checks pass
+   - Failed quality checks prevent unnecessary builds
+
+2. **For GitHub Pages deployment** (optional):
+   - Go to Settings → Pages
+   - Set Source to "GitHub Actions"
+
+3. **For Vercel deployment** (recommended):
+   - Connect repository to Vercel
+   - Set `PUBLIC_SITE_URL` environment variable in Vercel dashboard
+   - Vercel will build directly from source (no artifacts needed)
+
+4. **Environment variables** (optional):
+   - GitHub: Settings → Secrets and Variables → Variables
+   - Add `PUBLIC_SITE_URL` for build validation
 
 ## 📚 Learn More
 
