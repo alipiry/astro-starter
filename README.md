@@ -147,11 +147,9 @@ This starter includes automated GitHub Actions workflows for:
   - Prettier formatting validation
   - Security audit with `bun audit`
 
-- **Build & Test** (`build.yml`): Runs after Code Quality passes
+- **Build** (`build.yml`): Runs after Code Quality passes
   - Waits for Code Quality workflow to succeed
   - Builds the project with Bun to validate compilation
-  - Lighthouse CI performance testing on PRs
-  - No artifact storage (optimized for Vercel deployment)
 
 ### **Ready for other platforms:**
 
@@ -166,18 +164,10 @@ This starter includes automated GitHub Actions workflows for:
    - Build & Test runs only after quality checks pass
    - Failed quality checks prevent unnecessary builds
 
-2. **For GitHub Pages deployment** (optional):
-   - Go to Settings → Pages
-   - Set Source to "GitHub Actions"
-
-3. **For Vercel deployment** (recommended):
+2. **For Vercel deployment** (recommended):
    - Connect repository to Vercel
    - Set `PUBLIC_SITE_URL` environment variable in Vercel dashboard
-   - Vercel will build directly from source (no artifacts needed)
-
-4. **Environment variables** (optional):
-   - GitHub: Settings → Secrets and Variables → Variables
-   - Add `PUBLIC_SITE_URL` for build validation
+   - Vercel will build directly from source
 
 ## 📚 Learn More
 
