@@ -1,9 +1,11 @@
-import globals from "globals";
-import { defineConfig } from "eslint/config";
 import js from "@eslint/js";
-import tseslint from "typescript-eslint";
+import { defineConfig } from "eslint/config";
 import astro from "eslint-plugin-astro";
+import eslintComments from "eslint-plugin-eslint-comments";
 import prettier from "eslint-plugin-prettier";
+import simpleImportSort from "eslint-plugin-simple-import-sort";
+import globals from "globals";
+import tseslint from "typescript-eslint";
 
 const tsParser = tseslint.parser;
 const astroParser = astro.parser;
@@ -23,10 +25,20 @@ export default defineConfig([
 
   {
     plugins: {
+      "eslint-comments": eslintComments,
       prettier: prettier,
+      "simple-import-sort": simpleImportSort,
     },
     rules: {
       "prettier/prettier": "off",
+      "simple-import-sort/imports": "error",
+      "simple-import-sort/exports": "error",
+
+      "eslint-comments/disable-enable-pair": "error",
+      "eslint-comments/no-duplicate-disable": "error",
+      "eslint-comments/no-unlimited-disable": "error",
+      "eslint-comments/no-unused-disable": "error",
+      "eslint-comments/no-unused-enable": "error",
     },
   },
 

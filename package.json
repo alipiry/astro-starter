@@ -5,13 +5,15 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
+    "clean": "rimraf dist .astro",
     "preview": "astro preview",
     "astro": "astro",
     "lint": "eslint . --ext .js,.ts,.astro",
     "lint:fix": "eslint . --ext .js,.ts,.astro --fix",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "type-check": "astro check"
+    "type-check": "astro check",
+    "prepare": "husky"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.5.1",
@@ -23,11 +25,16 @@
     "@eslint/js": "^9.35.0",
     "eslint": "^9.35.0",
     "eslint-plugin-astro": "^1.3.1",
+    "eslint-plugin-eslint-comments": "^3.2.0",
     "eslint-plugin-jsx-a11y": "^6.10.2",
     "eslint-plugin-prettier": "^5.5.4",
+    "eslint-plugin-simple-import-sort": "^12.1.1",
     "globals": "^16.4.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.1.6",
     "prettier": "^3.6.2",
     "prettier-plugin-astro": "^0.14.1",
+    "rimraf": "^6.0.1",
     "typescript-eslint": "^8.43.0"
   }
 }
