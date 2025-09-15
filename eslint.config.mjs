@@ -1,9 +1,10 @@
-import globals from "globals";
-import { defineConfig } from "eslint/config";
 import js from "@eslint/js";
-import tseslint from "typescript-eslint";
+import { defineConfig } from "eslint/config";
 import astro from "eslint-plugin-astro";
 import prettier from "eslint-plugin-prettier";
+import simpleImportSort from "eslint-plugin-simple-import-sort";
+import globals from "globals";
+import tseslint from "typescript-eslint";
 
 const tsParser = tseslint.parser;
 const astroParser = astro.parser;
@@ -24,9 +25,12 @@ export default defineConfig([
   {
     plugins: {
       prettier: prettier,
+      "simple-import-sort": simpleImportSort,
     },
     rules: {
       "prettier/prettier": "off",
+      "simple-import-sort/imports": "error",
+      "simple-import-sort/exports": "error",
     },
   },
 

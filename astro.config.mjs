@@ -1,9 +1,7 @@
 // @ts-check
-import { defineConfig } from "astro/config";
-
-import robotsTxt from "astro-robots-txt";
 import sitemap from "@astrojs/sitemap";
-
+import { defineConfig } from "astro/config";
+import robotsTxt from "astro-robots-txt";
 import { loadEnv } from "vite";
 
 const { PUBLIC_SITE_URL } = loadEnv(
