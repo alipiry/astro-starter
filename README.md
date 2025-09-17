@@ -10,6 +10,7 @@ A modern, SEO-optimized Astro starter template with comprehensive meta tags, soc
 - **🚀 CI/CD Ready**: GitHub Actions workflows for quality checks and builds
 - **🎨 Clean Architecture**: Organized component structure with layouts
 - **🌐 Social Media Integration**: Twitter and OpenGraph meta tags configured
+- **🔧 Git Hooks**: Husky and lint-staged for automated pre-commit quality checks
 
 ## 🏗️ Project Structure
 
@@ -42,6 +43,7 @@ A modern, SEO-optimized Astro starter template with comprehensive meta tags, soc
 ├── tsconfig.json              # TypeScript configuration
 ├── .prettierrc.mjs            # Prettier configuration
 ├── .prettierignore            # Prettier ignore patterns
+├── lint-staged.config.js      # Lint-staged configuration
 ├── .env.example               # Environment variables template
 └── package.json
 ```
@@ -57,6 +59,8 @@ A modern, SEO-optimized Astro starter template with comprehensive meta tags, soc
   - ESLint with Astro plugin
   - Prettier with Astro formatting
   - TypeScript support
+  - Husky for Git hooks
+  - lint-staged for pre-commit quality checks
 - **Package Manager**: Bun for fast installations
 
 ## 🚀 Quick Start
@@ -99,6 +103,39 @@ A modern, SEO-optimized Astro starter template with comprehensive meta tags, soc
 | `bun astro ...`        | Run CLI commands like `astro add`, `astro check` |
 | `bun astro -- --help`  | Get help using the Astro CLI                     |
 
+## 🪝 Git Hooks & Pre-commit Checks
+
+This project uses **Husky** and **lint-staged** to ensure code quality before commits:
+
+### Automated Quality Checks
+
+When you commit changes, the following checks run automatically:
+
+- **Type Checking**: Astro's TypeScript checker validates all `.ts`, `.tsx`, and `.astro` files
+- **Linting**: ESLint fixes code style issues automatically
+- **Formatting**: Prettier formats code according to project standards
+
+### Configuration
+
+The pre-commit hooks are configured in `lint-staged.config.js`:
+
+```javascript
+{
+  "**/*.{ts,tsx,astro}": "bun run type-check",
+  "**/*.astro": ["eslint --fix", "prettier --write"],
+  "**/*.{ts,tsx,js,jsx}": ["eslint --fix", "prettier --write"],
+  "**/*.{md,json,yaml,yml,css,scss,sass}": "prettier --write"
+}
+```
+
+### Setup
+
+Git hooks are automatically installed when you run `bun install` via the `prepare` script. If you need to reinstall them manually:
+
+```bash
+bun run prepare
+```
+
 ## 🔧 Configuration
 
 ### Environment Variables
@@ -140,6 +177,8 @@ The `Layout.astro` includes comprehensive SEO setup:
 - `eslint` + `eslint-plugin-astro` - Code linting
 - `prettier` + `prettier-plugin-astro` - Code formatting
 - `typescript-eslint` - TypeScript linting
+- `husky` - Git hooks management
+- `lint-staged` - Pre-commit quality checks
 - Various configuration plugins
 
 ## 🌐 Deployment
