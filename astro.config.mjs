@@ -1,4 +1,6 @@
 // @ts-check
+import { fileURLToPath, URL } from "node:url";
+
 import sitemap from "@astrojs/sitemap";
 import { defineConfig } from "astro/config";
 import robotsTxt from "astro-robots-txt";
@@ -14,4 +16,11 @@ const { PUBLIC_SITE_URL } = loadEnv(
 export default defineConfig({
   site: PUBLIC_SITE_URL || "http://localhost:4321",
   integrations: [sitemap(), robotsTxt()],
+  vite: {
+    resolve: {
+      alias: {
+        "@": fileURLToPath(new URL("./src", import.meta.url)),
+      },
+    },
+  },
 });
