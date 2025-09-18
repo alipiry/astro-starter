@@ -10,7 +10,7 @@ const { title, description = "Astro Starter" } = Astro.props;
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <SEO
       title={title}
       titleDefault="Astro Starter"
@@ -57,8 +57,6 @@ const { title, description = "Astro Starter" } = Astro.props;
           { name: "googlebot", content: "index, follow" },
           { name: "theme-color", content: "#000000" },
           { name: "msapplication-TileColor", content: "#000000" },
-          { property: "og:locale", content: "en_US" },
-          { property: "og:site_name", content: "Astro Starter" },
         ],
         link: [
           {
