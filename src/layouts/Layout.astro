@@ -1,9 +1,20 @@
 ---
 import { SEO } from "astro-seo";
 
-const siteUrl = import.meta.env.PUBLIC_SITE_URL;
+const siteUrl = import.meta.env.SITE_URL || "https://astro-starter.piry.dev";
+const appEnv = import.meta.env.APP_ENV || "development";
+
+const allowIndexing = appEnv === "production";
+const robotsContent = allowIndexing ? "index, follow" : "noindex, nofollow";
 
 const { title, description = "Astro Starter" } = Astro.props;
+
+const isIndexPage = Astro.url.pathname === "/";
+
+const DEFAULT_TITLE = "Astro Starter";
+
+const pageTitle = isIndexPage ? DEFAULT_TITLE : title || DEFAULT_TITLE;
+const titleTemplate = isIndexPage ? "%s" : "%s | Astro Starter";
 ---
 
 <!doctype html>
@@ -12,11 +23,13 @@ const { title, description = "Astro Starter" } = Astro.props;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <SEO
-      title={title}
-      titleDefault="Astro Starter"
-      titleTemplate="%s | Astro Starter"
+      title={pageTitle}
+      titleDefault={DEFAULT_TITLE}
+      titleTemplate={titleTemplate}
       description={description}
       canonical={Astro.url.toString()}
+      noindex={!allowIndexing}
+      nofollow={!allowIndexing}
       openGraph={{
         basic: {
           title: title || "Astro Starter",
@@ -53,8 +66,7 @@ const { title, description = "Astro Starter" } = Astro.props;
             content:
               "astro, web development, javascript, typescript, modern web",
           },
-          { name: "robots", content: "index, follow" },
-          { name: "googlebot", content: "index, follow" },
+          { name: "googlebot", content: robotsContent },
           { name: "theme-color", content: "#000000" },
           { name: "msapplication-TileColor", content: "#000000" },
         ],
