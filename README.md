@@ -143,7 +143,8 @@ bun run prepare
 Create a `.env` file in the root directory:
 
 ```bash
-PUBLIC_SITE_URL=https://your-domain.com
+SITE_URL=https://your-domain.com
+APP_ENV=production
 ```
 
 ### SEO Configuration
@@ -218,7 +219,7 @@ The `.github/workflows/` directory contains the following CI/CD pipelines:
 
 2. **For Vercel deployment**:
    - Connect repository to Vercel
-   - Set `PUBLIC_SITE_URL` environment variable in Vercel dashboard
+   - Set `SITE_URL` and `APP_ENV` environment variable in Vercel dashboard
    - Vercel will build directly from source
 
 ## 📚 Learn More

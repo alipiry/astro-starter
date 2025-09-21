@@ -6,7 +6,7 @@ import { defineConfig } from "astro/config";
 import robotsTxt from "astro-robots-txt";
 import { loadEnv } from "vite";
 
-const { PUBLIC_SITE_URL, APP_ENV } = loadEnv(
+const { SITE_URL, APP_ENV } = loadEnv(
   process.env.NODE_ENV || "development",
   process.cwd(),
   "",
@@ -14,9 +14,13 @@ const { PUBLIC_SITE_URL, APP_ENV } = loadEnv(
 
 // https://astro.build/config
 export default defineConfig({
-  site: PUBLIC_SITE_URL || "http://localhost:4321",
+  site: SITE_URL || "https://astro-starter.piry.dev",
   integrations: [
-    sitemap(),
+    sitemap({
+      changefreq: "monthly",
+      priority: 0.7,
+      lastmod: new Date(),
+    }),
     robotsTxt({
       policy:
         APP_ENV === "production"
