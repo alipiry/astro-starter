@@ -15,22 +15,27 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Setup Bun
-        uses: oven-sh/setup-bun@v1
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
-          bun-version: latest
+          node-version: 20
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: latest
 
       - name: Install dependencies
-        run: bun install
+        run: pnpm install
 
       - name: Check TypeScript
-        run: bun run astro check
+        run: pnpm run astro check
 
       - name: Run ESLint
-        run: bun run lint
+        run: pnpm run lint
 
       - name: Check Prettier formatting
-        run: bun run format:check
+        run: pnpm run format:check
 
   security:
     name: Security Audit
@@ -40,14 +45,19 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Setup Bun
-        uses: oven-sh/setup-bun@v1
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
-          bun-version: latest
+          node-version: 20
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: latest
 
       - name: Install dependencies
-        run: bun install
+        run: pnpm install
 
       - name: Run security audit
-        run: bun audit
+        run: pnpm audit
         continue-on-error: true

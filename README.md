@@ -61,14 +61,14 @@ A modern, SEO-optimized Astro starter template with comprehensive meta tags, soc
   - TypeScript support
   - Husky for Git hooks
   - lint-staged for pre-commit quality checks
-- **Package Manager**: Bun for fast installations
+- **Package Manager**: pnpm for fast installations
 
 ## 🚀 Quick Start
 
 1. **Clone and install dependencies**
 
    ```bash
-   bun install
+   pnpm install
    ```
 
 2. **Set up environment variables**
@@ -81,7 +81,7 @@ A modern, SEO-optimized Astro starter template with comprehensive meta tags, soc
 3. **Start development server**
 
    ```bash
-   bun dev
+   pnpm dev
    ```
 
 4. **Open your browser**
@@ -89,19 +89,19 @@ A modern, SEO-optimized Astro starter template with comprehensive meta tags, soc
 
 ## 📋 Available Commands
 
-| Command                | Action                                           |
-| :--------------------- | :----------------------------------------------- |
-| `bun install`          | Installs dependencies                            |
-| `bun dev`              | Starts local dev server at `localhost:4321`      |
-| `bun build`            | Build your production site to `./dist/`          |
-| `bun preview`          | Preview your build locally, before deploying     |
-| `bun run lint`         | Run ESLint to check code quality                 |
-| `bun run lint:fix`     | Fix ESLint issues automatically                  |
-| `bun run format`       | Format code with Prettier                        |
-| `bun run format:check` | Check if code is properly formatted              |
-| `bun run type-check`   | Run Astro's TypeScript checker                   |
-| `bun astro ...`        | Run CLI commands like `astro add`, `astro check` |
-| `bun astro -- --help`  | Get help using the Astro CLI                     |
+| Command                 | Action                                           |
+| :---------------------- | :----------------------------------------------- |
+| `pnpm install`          | Installs dependencies                            |
+| `pnpm dev`              | Starts local dev server at `localhost:4321`      |
+| `pnpm build`            | Build your production site to `./dist/`          |
+| `pnpm preview`          | Preview your build locally, before deploying     |
+| `pnpm run lint`         | Run ESLint to check code quality                 |
+| `pnpm run lint:fix`     | Fix ESLint issues automatically                  |
+| `pnpm run format`       | Format code with Prettier                        |
+| `pnpm run format:check` | Check if code is properly formatted              |
+| `pnpm run type-check`   | Run Astro's TypeScript checker                   |
+| `pnpm astro ...`        | Run CLI commands like `astro add`, `astro check` |
+| `pnpm astro -- --help`  | Get help using the Astro CLI                     |
 
 ## 🪝 Git Hooks & Pre-commit Checks
 
@@ -121,7 +121,7 @@ The pre-commit hooks are configured in `lint-staged.config.js`:
 
 ```javascript
 {
-  "**/*.{ts,tsx,astro}": "bun run type-check",
+  "**/*.{ts,tsx,astro}": "pnpm run type-check",
   "**/*.astro": ["eslint --fix", "prettier --write"],
   "**/*.{ts,tsx,js,jsx}": ["eslint --fix", "prettier --write"],
   "**/*.{md,json,yaml,yml,css,scss,sass}": "prettier --write"
@@ -130,10 +130,10 @@ The pre-commit hooks are configured in `lint-staged.config.js`:
 
 ### Setup
 
-Git hooks are automatically installed when you run `bun install` via the `prepare` script. If you need to reinstall them manually:
+Git hooks are automatically installed when you run `pnpm install` via the `prepare` script. If you need to reinstall them manually:
 
 ```bash
-bun run prepare
+pnpm run prepare
 ```
 
 ## 🔧 Configuration
@@ -195,11 +195,11 @@ The `.github/workflows/` directory contains the following CI/CD pipelines:
   - TypeScript checking with `astro check`
   - ESLint code linting
   - Prettier formatting validation
-  - Security audit with `bun audit`
+  - Security audit with `pnpm audit`
 
 - **Build** (`build.yml`): Build verification
   - Runs after Code Quality workflow completes successfully
-  - Uses Bun to install dependencies and build the project
+  - Uses pnpm to install dependencies and build the project
   - Validates that the project compiles correctly
 
 ### **Deployment Options**
