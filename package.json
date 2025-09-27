@@ -2,6 +2,25 @@
   "name": "astro-starter",
   "type": "module",
   "version": "0.0.1",
+  "description": "A modern, SEO-optimized Astro starter template with comprehensive meta tags, social media integration, and essential web development tools.",
+  "author": "Ali Piry",
+  "license": "MIT",
+  "keywords": [
+    "astro",
+    "starter",
+    "template",
+    "seo",
+    "web-development",
+    "typescript"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/alipiry/astro-starter.git"
+  },
+  "bugs": {
+    "url": "https://github.com/alipiry/astro-starter/issues"
+  },
+  "homepage": "https://github.com/alipiry/astro-starter#readme",
   "engines": {
     "node": ">=20.0.0",
     "pnpm": ">=10.0.0"
@@ -21,7 +40,7 @@
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.6.0",
-    "astro": "^5.13.8",
+    "astro": "^5.14.1",
     "astro-robots-txt": "^1.0.0",
     "astro-seo": "^0.8.4",
     "sharp": "^0.34.4"
