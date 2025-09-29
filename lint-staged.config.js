@@ -11,6 +11,7 @@ export default {
     `pnpm exec prettier --write ${filenames.join(" ")}`,
   ],
 
-  "**/*.{md,json,yaml,yml,css,scss,sass}": (filenames) =>
+  "**/*.{md,json,yaml,yml,css,scss,sass}": (filenames) => [
     `pnpm exec prettier --write ${filenames.join(" ")}`,
+  ],
 };
