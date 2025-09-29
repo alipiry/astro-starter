@@ -2,6 +2,10 @@
 
 A modern, SEO-optimized Astro starter template with comprehensive meta tags, social media integration, and essential web development tools.
 
+<div align="center">
+  <h2>Made with ❤ by <a href="https://github.com/alipiry">Ali Piry</a></h2>
+</div>
+
 ## ✨ Features
 
 - **🎯 SEO Optimized**: Complete OpenGraph, Twitter Cards, and meta tag setup
