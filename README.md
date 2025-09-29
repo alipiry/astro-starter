@@ -2,6 +2,10 @@
 
 A modern, SEO-optimized Astro starter template with comprehensive meta tags, social media integration, and essential web development tools.
 
+<div align="center">
+  <h2>Made with ❤ by <a href="https://github.com/alipiry">Ali Piry</a></h2>
+</div>
+
 ## ✨ Features
 
 - **🎯 SEO Optimized**: Complete OpenGraph, Twitter Cards, and meta tag setup
@@ -75,7 +79,6 @@ A modern, SEO-optimized Astro starter template with comprehensive meta tags, soc
 
    ```bash
    cp .env.example .env
-   # Edit .env with your site URL
    ```
 
 3. **Start development server**
@@ -227,3 +230,7 @@ The `.github/workflows/` directory contains the following CI/CD pipelines:
 - [Astro Documentation](https://docs.astro.build)
 - [Astro Discord Community](https://astro.build/chat)
 - [SEO Best Practices](https://docs.astro.build/en/guides/content/#seo)
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
