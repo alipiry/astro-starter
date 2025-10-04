@@ -2,6 +2,8 @@
 
 A modern, SEO-optimized Astro starter template with comprehensive meta tags, social media integration, and essential web development tools.
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/7959683b-efbb-402e-8e87-dfb1910e041d/deploy-status)](https://app.netlify.com/projects/astro-starter-ap/deploys)
+
 <div align="center">
   <h2>Made with ❤ by <a href="https://github.com/alipiry">Ali Piry</a></h2>
 </div>
