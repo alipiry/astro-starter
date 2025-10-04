@@ -209,8 +209,8 @@ The `.github/workflows/` directory contains the following CI/CD pipelines:
 
 **Recommended platforms:**
 
-- **Vercel**: Zero-config deployment with Git integration
-- **Netlify**: Automatic builds from repository
+- **Netlify**: Automatic builds from repository with Git integration
+- **Cloudflare Workers**: Serverless deployment with global CDN
 - **GitHub Pages**: Static site hosting
 - **Any static hosting provider**
 
@@ -220,10 +220,10 @@ The `.github/workflows/` directory contains the following CI/CD pipelines:
    - Quality checks must pass before builds run
    - Failed quality checks prevent unnecessary builds
 
-2. **For Vercel deployment**:
-   - Connect repository to Vercel
-   - Set `SITE_URL` and `APP_ENV` environment variable in Vercel dashboard
-   - Vercel will build directly from source
+2. **For Netlify deployment**:
+   - Connect repository to Netlify
+   - Set `SITE_URL` and `APP_ENV` environment variable in Netlify dashboard
+   - Netlify will build directly from source
 
 ## 📚 Learn More
 
