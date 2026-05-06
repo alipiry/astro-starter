@@ -1,7 +1,7 @@
 import js from "@eslint/js";
+import eslintComments from "@eslint-community/eslint-plugin-eslint-comments";
 import { defineConfig } from "eslint/config";
 import astro from "eslint-plugin-astro";
-import eslintComments from "eslint-plugin-eslint-comments";
 import prettier from "eslint-plugin-prettier";
 import simpleImportSort from "eslint-plugin-simple-import-sort";
 import globals from "globals";
