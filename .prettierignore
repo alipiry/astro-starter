@@ -1,6 +1,7 @@
 # Ignore artifacts:
 dist
 .astro
+.claude
 
 # Standard
 **/.git
