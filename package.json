@@ -46,6 +46,11 @@
     "astro-seo": "^1.1.0",
     "sharp": "^0.34.5"
   },
+  "pnpm": {
+    "overrides": {
+      "devalue": ">=5.8.1"
+    }
+  },
   "devDependencies": {
     "@eslint-community/eslint-plugin-eslint-comments": "^4.7.1",
     "@eslint/js": "^9.39.4",
