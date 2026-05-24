@@ -2,7 +2,6 @@ import js from "@eslint/js";
 import eslintComments from "@eslint-community/eslint-plugin-eslint-comments";
 import { defineConfig } from "eslint/config";
 import astro from "eslint-plugin-astro";
-import prettier from "eslint-plugin-prettier";
 import simpleImportSort from "eslint-plugin-simple-import-sort";
 import globals from "globals";
 import tseslint from "typescript-eslint";
@@ -11,6 +10,17 @@ const tsParser = tseslint.parser;
 const astroParser = astro.parser;
 
 export default defineConfig([
+  {
+    ignores: [
+      "dist/**",
+      ".astro/**",
+      "node_modules/**",
+      "public/**",
+      "**/*.d.ts",
+      ".github/**",
+    ],
+  },
+
   {
     languageOptions: {
       globals: {
@@ -26,11 +36,9 @@ export default defineConfig([
   {
     plugins: {
       "eslint-comments": eslintComments,
-      prettier: prettier,
       "simple-import-sort": simpleImportSort,
     },
     rules: {
-      "prettier/prettier": "off",
       "simple-import-sort/imports": "error",
       "simple-import-sort/exports": "error",
 
@@ -53,16 +61,10 @@ export default defineConfig([
         extraFileExtensions: [".astro"],
         sourceType: "module",
         ecmaVersion: "latest",
-        project: "./tsconfig.json",
       },
     },
     rules: {
-      "no-undef": "off",
       "@typescript-eslint/no-explicit-any": "off",
     },
-  },
-
-  {
-    ignores: ["dist/**", "**/*.d.ts", ".github/"],
   },
 ]);

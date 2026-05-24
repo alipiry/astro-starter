@@ -1,20 +1,25 @@
 ---
+import { APP_ENV, SITE_URL } from "astro:env/server";
 import { SEO } from "astro-seo";
 
-const siteUrl = import.meta.env.SITE_URL || "https://astro-starter.piry.dev";
-const appEnv = import.meta.env.APP_ENV || "development";
-
-const allowIndexing = appEnv === "production";
-const robotsContent = allowIndexing ? "index, follow" : "noindex, nofollow";
-
-const { title, description = "Astro Starter" } = Astro.props;
-
-const isIndexPage = Astro.url.pathname === "/";
+interface Props {
+  title?: string;
+  description?: string;
+}
 
 const DEFAULT_TITLE = "Astro Starter";
 
+const siteUrl = SITE_URL;
+const allowIndexing = APP_ENV === "production";
+const robotsContent = allowIndexing ? "index, follow" : "noindex, nofollow";
+
+const { title, description = DEFAULT_TITLE } = Astro.props;
+
+const isIndexPage = Astro.url.pathname === "/";
+
 const pageTitle = isIndexPage ? DEFAULT_TITLE : title || DEFAULT_TITLE;
-const titleTemplate = isIndexPage ? "%s" : "%s | Astro Starter";
+const titleTemplate = isIndexPage ? "%s" : `%s | ${DEFAULT_TITLE}`;
+const canonicalUrl = new URL(Astro.url.pathname, siteUrl).toString();
 ---
 
 <!doctype html>
@@ -27,25 +32,25 @@ const titleTemplate = isIndexPage ? "%s" : "%s | Astro Starter";
       titleDefault={DEFAULT_TITLE}
       titleTemplate={titleTemplate}
       description={description}
-      canonical={Astro.url.toString()}
+      canonical={canonicalUrl}
       noindex={!allowIndexing}
       nofollow={!allowIndexing}
       openGraph={{
         basic: {
-          title: title || "Astro Starter",
+          title: title || DEFAULT_TITLE,
           type: "website",
           image: `${siteUrl}/og.png`,
-          url: Astro.url.toString(),
+          url: canonicalUrl,
         },
         image: {
-          alt: "Astro Starter",
+          alt: DEFAULT_TITLE,
           width: 1600,
           height: 800,
           type: "image/png",
         },
         optional: {
           description,
-          siteName: "Astro Starter",
+          siteName: DEFAULT_TITLE,
           locale: "en_US",
         },
       }}
@@ -53,10 +58,10 @@ const titleTemplate = isIndexPage ? "%s" : "%s | Astro Starter";
         card: "summary_large_image",
         site: "@alipiry",
         creator: "@alipiry",
-        title: title || "Astro Starter",
+        title: title || DEFAULT_TITLE,
         description,
         image: `${siteUrl}/og.png`,
-        imageAlt: "Astro Starter",
+        imageAlt: DEFAULT_TITLE,
       }}
       extend={{
         meta: [
@@ -75,6 +80,11 @@ const titleTemplate = isIndexPage ? "%s" : "%s | Astro Starter";
             rel: "apple-touch-icon",
             sizes: "180x180",
             href: "/apple-touch-icon.png",
+          },
+          {
+            rel: "icon",
+            type: "image/svg+xml",
+            href: "/favicon.svg",
           },
           {
             rel: "icon",
@@ -108,7 +118,6 @@ const titleTemplate = isIndexPage ? "%s" : "%s | Astro Starter";
         ],
       }}
     />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="sitemap" href="/sitemap-index.xml" />
   </head>
   <body>

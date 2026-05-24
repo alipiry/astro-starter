@@ -1,8 +1,6 @@
 // @ts-check
-import { fileURLToPath, URL } from "node:url";
-
 import sitemap from "@astrojs/sitemap";
-import { defineConfig } from "astro/config";
+import { defineConfig, envField } from "astro/config";
 import robotsTxt from "astro-robots-txt";
 import { loadEnv } from "vite";
 
@@ -28,11 +26,19 @@ export default defineConfig({
           : [{ userAgent: "*", disallow: "/" }],
     }),
   ],
-  vite: {
-    resolve: {
-      alias: {
-        "@": fileURLToPath(new URL("./src", import.meta.url)),
-      },
+  env: {
+    schema: {
+      SITE_URL: envField.string({
+        context: "server",
+        access: "public",
+        default: "https://astro-starter.piry.dev",
+      }),
+      APP_ENV: envField.enum({
+        values: ["development", "production"],
+        context: "server",
+        access: "public",
+        default: "development",
+      }),
     },
   },
 });
