@@ -110,7 +110,12 @@ A modern, SEO-optimized Astro starter template with comprehensive meta tags, soc
 
 ## 🪝 Git Hooks & Pre-commit Checks
 
-This project uses **Husky** and **lint-staged** to ensure code quality before commits:
+This project uses **Husky**, **lint-staged**, and **commitlint** to ensure code quality before commits:
+
+| Hook         | Action                                                               |
+| ------------ | -------------------------------------------------------------------- |
+| `pre-commit` | lint-staged (type-check + ESLint `--fix` + Prettier on staged files) |
+| `commit-msg` | commitlint                                                           |
 
 ### Automated Quality Checks
 
@@ -140,6 +145,28 @@ Git hooks are automatically installed when you run `pnpm install` via the `prepa
 ```bash
 pnpm run prepare
 ```
+
+### Commit Message Format
+
+[Conventional Commits](https://www.conventionalcommits.org/) format, enforced by commitlint on `commit-msg`:
+
+```
+type(scope): subject
+```
+
+Examples:
+
+```
+chore(deps): bump astro to v7
+fix(seo): correct twitter card image ref
+chore(ci): cache pnpm store in build workflow
+```
+
+**Scopes** (optional but encouraged): `deps`, `security`, `ci`, `config`, `seo`, `assets`, `root`.
+
+**Types:** `feat`, `fix`, `docs`, `style`, `refactor`, `perf`, `test`, `chore`, `ci`, `build`, `revert`.
+
+Max header length: 100 characters. No trailing period on subject.
 
 ## 🔧 Configuration
 
@@ -185,6 +212,7 @@ The `Layout.astro` includes comprehensive SEO setup:
 - `typescript-eslint` - TypeScript linting
 - `husky` - Git hooks management
 - `lint-staged` - Pre-commit quality checks
+- `@commitlint/cli` - Commit message linting
 - Various configuration plugins
 
 ## 🌐 Deployment
