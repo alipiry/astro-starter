@@ -44,12 +44,15 @@ A modern, SEO-optimized Astro starter template with comprehensive meta tags, soc
 │   │   └── Layout.astro       # Main layout with SEO
 │   └── pages/                 # File-based routing
 │       └── index.astro
+├── .husky/                    # Git hooks (pre-commit, commit-msg)
 ├── astro.config.mjs           # Astro configuration
 ├── eslint.config.mjs          # ESLint configuration
 ├── tsconfig.json              # TypeScript configuration
 ├── .prettierrc.mjs            # Prettier configuration
 ├── .prettierignore            # Prettier ignore patterns
 ├── lint-staged.config.js      # Lint-staged configuration
+├── commitlint.config.js       # Commit message linting rules
+├── pnpm-workspace.yaml        # pnpm workspace + dependency overrides
 ├── .env.example               # Environment variables template
 └── package.json
 ```
