@@ -1,0 +1,30 @@
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /
+    target-branch: develop
+    schedule:
+      interval: weekly
+    # New releases get a week to surface malicious/broken publishes.
+    cooldown:
+      default-days: 7
+    groups:
+      astro:
+        patterns: ["astro", "@astrojs/*"]
+      lint-format:
+        patterns:
+          ["eslint*", "@eslint/*", "typescript-eslint", "prettier*", "globals"]
+        update-types: ["minor", "patch"]
+      dev-tooling:
+        dependency-type: development
+        update-types: ["minor", "patch"]
+  - package-ecosystem: github-actions
+    directory: /
+    target-branch: develop
+    schedule:
+      interval: weekly
+    cooldown:
+      default-days: 7
+    groups:
+      actions:
+        patterns: ["*"]

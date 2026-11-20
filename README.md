@@ -11,7 +11,7 @@ A modern, SEO-optimized Astro starter template with comprehensive meta tags, soc
 ## ✨ Features
 
 - **🎯 SEO Optimized**: Complete OpenGraph, Twitter Cards, and meta tag setup
-- **🔍 Search Engine Friendly**: Automated sitemap and robots.txt generation
+- **🔍 Search Engine Friendly**: Automated sitemap and env-gated robots.txt
 - **⚡ Modern Tooling**: ESLint, Prettier, and TypeScript configuration
 - **🚀 CI/CD Ready**: GitHub Actions workflows for quality checks and builds
 - **🎨 Clean Architecture**: Organized component structure with layouts
@@ -44,7 +44,7 @@ A modern, SEO-optimized Astro starter template with comprehensive meta tags, soc
 │   │   └── Layout.astro       # Main layout with SEO
 │   └── pages/                 # File-based routing
 │       └── index.astro
-├── .husky/                    # Git hooks (pre-commit, commit-msg)
+├── .husky/                    # Git hooks (pre-commit, commit-msg, pre-push)
 ├── astro.config.mjs           # Astro configuration
 ├── eslint.config.mjs          # ESLint configuration
 ├── tsconfig.json              # TypeScript configuration
@@ -63,7 +63,6 @@ A modern, SEO-optimized Astro starter template with comprehensive meta tags, soc
 - **SEO**: [astro-seo](https://github.com/jonasmerlin/astro-seo) - Comprehensive SEO component
 - **Integrations**:
   - `@astrojs/sitemap` - Automatic sitemap generation
-  - `astro-robots-txt` - Robots.txt generation
 - **Development Tools**:
   - ESLint with Astro plugin
   - Prettier with Astro formatting
@@ -115,16 +114,17 @@ A modern, SEO-optimized Astro starter template with comprehensive meta tags, soc
 
 This project uses **Husky**, **lint-staged**, and **commitlint** to ensure code quality before commits:
 
-| Hook         | Action                                                               |
-| ------------ | -------------------------------------------------------------------- |
-| `pre-commit` | lint-staged (type-check + ESLint `--fix` + Prettier on staged files) |
-| `commit-msg` | commitlint                                                           |
+| Hook         | Action                                                  |
+| ------------ | ------------------------------------------------------- |
+| `pre-commit` | lint-staged (ESLint `--fix` + Prettier on staged files) |
+| `commit-msg` | commitlint                                              |
+| `pre-push`   | `pnpm run type-check` (full repo)                       |
 
 ### Automated Quality Checks
 
-When you commit changes, the following checks run automatically:
+When you commit or push, the following checks run automatically:
 
-- **Type Checking**: Astro's TypeScript checker validates all `.ts`, `.tsx`, and `.astro` files
+- **Type Checking** (pre-push): Astro's TypeScript checker validates the whole repo
 - **Linting**: ESLint fixes code style issues automatically
 - **Formatting**: Prettier formats code according to project standards
 
@@ -134,10 +134,8 @@ The pre-commit hooks are configured in `lint-staged.config.js`:
 
 ```javascript
 {
-  "**/*.{ts,tsx,astro}": "pnpm run type-check",
-  "**/*.astro": ["eslint --fix", "prettier --write"],
-  "**/*.{ts,tsx,js,jsx}": ["eslint --fix", "prettier --write"],
-  "**/*.{md,json,yaml,yml,css,scss,sass}": "prettier --write"
+  "*.{js,mjs,cjs,ts,tsx,astro}": ["eslint --fix --no-warn-ignored", "prettier --write"],
+  "*.{md,mdx,json,yaml,yml,css,scss,sass}": "prettier --write"
 }
 ```
 
@@ -206,7 +204,6 @@ The `Layout.astro` includes comprehensive SEO setup:
 - `astro` - Core framework
 - `astro-seo` - SEO component library
 - `@astrojs/sitemap` - Sitemap generation
-- `astro-robots-txt` - Robots.txt generation
 
 ### Development
 
