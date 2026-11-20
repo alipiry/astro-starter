@@ -129,6 +129,8 @@ const jsonLd = JSON.stringify({
     <script type="application/ld+json" set:html={jsonLd} />
   </head>
   <body>
+    <!-- Target: give your page's <main> id="main". -->
+    <a class="skip-link" href="#main">Skip to content</a>
     <slot />
   </body>
 </html>
@@ -139,5 +141,19 @@ const jsonLd = JSON.stringify({
     margin: 0;
     width: 100%;
     height: 100%;
+  }
+
+  .skip-link {
+    position: absolute;
+    left: 0.5rem;
+    top: -4rem;
+    padding: 0.5rem 1rem;
+    background: #fff;
+    color: #000;
+    z-index: 10;
+  }
+
+  .skip-link:focus {
+    top: 0.5rem;
   }
 </style>
