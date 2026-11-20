@@ -5,6 +5,7 @@ import { SEO } from "astro-seo";
 interface Props {
   title?: string;
   description?: string;
+  noindex?: boolean;
 }
 
 // Site identity: replace these when adopting the starter.
@@ -15,10 +16,14 @@ const AUTHOR = "Ali Piry";
 const TWITTER_HANDLE = "@alipiry";
 
 const siteUrl = SITE_URL;
-const allowIndexing = APP_ENV === "production";
-const robotsContent = allowIndexing ? "index, follow" : "noindex, nofollow";
+const {
+  title,
+  description = DEFAULT_DESCRIPTION,
+  noindex = false,
+} = Astro.props;
 
-const { title, description = DEFAULT_DESCRIPTION } = Astro.props;
+const allowIndexing = APP_ENV === "production" && !noindex;
+const robotsContent = allowIndexing ? "index, follow" : "noindex, nofollow";
 
 const isIndexPage = Astro.url.pathname === "/";
 
