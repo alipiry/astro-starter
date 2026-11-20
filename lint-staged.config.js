@@ -1,17 +1,9 @@
+// String commands: lint-staged appends the filenames shell-quoted, so
+// paths like src/pages/[slug].astro are safe. Typecheck runs on pre-push.
 export default {
-  "**/*.{ts,tsx,astro}": () => "pnpm run type-check",
-
-  "**/*.astro": (filenames) => [
-    `pnpm exec eslint --fix ${filenames.join(" ")}`,
-    `pnpm exec prettier --write ${filenames.join(" ")}`,
+  "*.{js,mjs,cjs,ts,tsx,astro}": [
+    "eslint --fix --no-warn-ignored",
+    "prettier --write",
   ],
-
-  "**/*.{ts,tsx,js,jsx}": (filenames) => [
-    `pnpm exec eslint --fix ${filenames.join(" ")}`,
-    `pnpm exec prettier --write ${filenames.join(" ")}`,
-  ],
-
-  "**/*.{md,json,yaml,yml,css,scss,sass}": (filenames) => [
-    `pnpm exec prettier --write ${filenames.join(" ")}`,
-  ],
+  "*.{md,mdx,json,yaml,yml,css,scss,sass}": "prettier --write",
 };
