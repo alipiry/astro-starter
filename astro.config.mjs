@@ -12,13 +12,7 @@ const { SITE_URL } = loadEnv(
 // https://astro.build/config
 export default defineConfig({
   site: SITE_URL || "https://astro-starter.piry.dev",
-  integrations: [
-    sitemap({
-      changefreq: "monthly",
-      priority: 0.7,
-      lastmod: new Date(),
-    }),
-  ],
+  integrations: [sitemap()],
   env: {
     schema: {
       SITE_URL: envField.string({
