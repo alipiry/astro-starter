@@ -53,7 +53,7 @@
     "eslint": "^10.15.0",
     "eslint-plugin-astro": "^2.1.1",
     "eslint-plugin-jsx-a11y": "^6.10.2",
-    "eslint-plugin-simple-import-sort": "^13.0.0",
+    "eslint-plugin-simple-import-sort": "^14.0.0",
     "globals": "^17.14.0",
     "husky": "^9.1.7",
     "lint-staged": "^17.6.1",
