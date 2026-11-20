@@ -25,6 +25,14 @@ const isIndexPage = Astro.url.pathname === "/";
 const pageTitle = isIndexPage ? DEFAULT_TITLE : title || DEFAULT_TITLE;
 const titleTemplate = isIndexPage ? "%s" : `%s | ${DEFAULT_TITLE}`;
 const canonicalUrl = new URL(Astro.url.pathname, siteUrl).toString();
+
+// "<" escaped so a title containing "</script>" cannot break out of the tag.
+const jsonLd = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: DEFAULT_TITLE,
+  url: siteUrl,
+}).replace(/</g, "\\u003c");
 ---
 
 <!doctype html>
@@ -124,6 +132,7 @@ const canonicalUrl = new URL(Astro.url.pathname, siteUrl).toString();
       }}
     />
     <link rel="sitemap" href="/sitemap-index.xml" />
+    <script type="application/ld+json" set:html={jsonLd} />
   </head>
   <body>
     <slot />
