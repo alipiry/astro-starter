@@ -1,10 +1,9 @@
 // @ts-check
 import sitemap from "@astrojs/sitemap";
 import { defineConfig, envField } from "astro/config";
-import robotsTxt from "astro-robots-txt";
 import { loadEnv } from "vite";
 
-const { SITE_URL, APP_ENV } = loadEnv(
+const { SITE_URL } = loadEnv(
   process.env.NODE_ENV || "development",
   process.cwd(),
   "",
@@ -18,12 +17,6 @@ export default defineConfig({
       changefreq: "monthly",
       priority: 0.7,
       lastmod: new Date(),
-    }),
-    robotsTxt({
-      policy:
-        APP_ENV === "production"
-          ? [{ userAgent: "*", allow: "/" }]
-          : [{ userAgent: "*", disallow: "/" }],
     }),
   ],
   env: {
