@@ -23,7 +23,7 @@ importers:
     devDependencies:
       '@astrojs/check':
         specifier: ^0.9.12
-        version: 0.9.12(prettier-plugin-astro@0.14.1)(prettier@3.10.1)(typescript@6.0.3)
+        version: 0.9.12(prettier-plugin-astro@1.1.2(prettier@3.10.1))(prettier@3.10.1)(typescript@6.0.3)
       '@commitlint/cli':
         specifier: ^21.2.4
         version: 21.2.4(conventional-commits-parser@7.1.4)(typescript@6.0.3)
@@ -58,8 +58,8 @@ importers:
         specifier: ^3.10.1
         version: 3.10.1
       prettier-plugin-astro:
-        specifier: ^0.14.1
-        version: 0.14.1
+        specifier: ^1.1.2
+        version: 1.1.2(prettier@3.10.1)
       rimraf:
         specifier: ^6.1.4
         version: 6.1.4
@@ -155,9 +155,6 @@ packages:
   '@astrojs/compiler-rs@0.5.3':
     resolution: {integrity: sha512-rNSAYm5IcRJMpNm+cSMaaPNCmzCXIdiz67kcBwC1qN8eTmO48wEJ6hZdlGq60+0HIHwUlncfaMxti1Fk2uJu7w==}
     engines: {node: '>=22.12.0'}
-
-  '@astrojs/compiler@2.13.1':
-    resolution: {integrity: sha512-f3FN83d2G/v32ipNClRKgYv30onQlMZX1vCeZMjPsMMPl1mDpmbl0+N5BYo4S/ofzqJyS5hvwacEo0CCVDn/Qg==}
 
   '@astrojs/compiler@4.0.0':
     resolution: {integrity: sha512-eouss7G8ygdZqHuke033VMcVw5HTZUu+PXd/h06DGDUg/jt5btPYPqh66ENWw/mU78rBrf/oeC4oqoBwMtDMNA==}
@@ -865,6 +862,9 @@ packages:
     resolution: {integrity: sha512-SEeaJLb3qBNF/OaXnaR1NmmBbFYk1zC0ZH/52fATcRPLFg/p791YrcyFFy44Bo9sLaGuSuLp5Q6axbb/O+v/RA==}
     engines: {node: ^14.18.0 || >=16.0.0}
 
+  '@prettier/parse-srcset@3.1.0':
+    resolution: {integrity: sha512-FIRv2rZotO9NP/r66taYqD1zICpPiBbrECqjKV/xqNotqDxF7fLzzUeK+1RSRx9Tenk0DajR/GcRmTJ2qtHaKQ==}
+
   '@rolldown/binding-android-arm-eabi@1.2.19':
     resolution: {integrity: sha512-e+Ebe0WT+9tbXmNKPIiC8YrWAHYwug3m6i4p3rZGGulfZri1jtI4HslT+OZnFf/OIHowWF71DTlHwXBP2SiA7A==}
     engines: {node: ^20.19.0 || >=22.12.0}
@@ -1297,8 +1297,8 @@ packages:
   argparse@2.0.1:
     resolution: {integrity: sha512-8+9WqebbFzpX9OR+Wa6O29asIogeRMzcGtAINdpMHHyAg10f05aSFVBbcEqGf/PXw1EjAZ+q2/bEBg3DvurK3Q==}
 
-  argue-cli@3.2.1:
-    resolution: {integrity: sha512-h8QG03KSAympQnbZe0k5h/mnQCCkoKO9rVQ0L+F99+NNTV4vm18Lq70WwIKE0aLN3mM1EUf42l960bl6Dd0jOw==}
+  argue-cli@3.2.0:
+    resolution: {integrity: sha512-VipTB0gXgGIFO2Rg9yEVN5wLt2AurJcZqDbgmYSwPwsykhLrQhs240/bfceev4w68lI8JshoOJIk9uW7tFzROw==}
     engines: {node: '>=22'}
 
   aria-query@5.3.2:
@@ -2232,6 +2232,10 @@ packages:
   micromark-util-types@2.0.3:
     resolution: {integrity: sha512-oxB2Ik03hI0gv+VNn9tnh1t1YEe9MDPptViAEgfdf3YQHsn0pzGTgCdlSCJXcwhqm8phaEuM7zeEu3QQzVBrPg==}
 
+  minimatch@11.0.8:
+    resolution: {integrity: sha512-nFQuYSTVrGvysVBps5Ih+0BdnYFN/Cj3C816r6+p7yK+FHrVLGE4O4N9AFwykrlNlvM2HYt+Rad1Uiro6h88Ig==}
+    engines: {node: 20 || >=22}
+
   minimatch@11.0.9:
     resolution: {integrity: sha512-KCFkfyjqerNlSstjlhIGNXIKZGA/6O4V4RlhZ+Dsr621SPPw0mzlypE9D9ZOoPiVefHID+j7/XuMMlqfD/F60Q==}
     engines: {node: 20 || >=22}
@@ -2404,9 +2408,11 @@ packages:
     resolution: {integrity: sha512-vkcDPrRZo1QZLbn5RLGPpg/WmIQ65qoWWhcGKf/b5eplkkarX0m9z8ppCat4mlOqUsWpyNuYgO3VRyrYHSzX5g==}
     engines: {node: '>= 0.8.0'}
 
-  prettier-plugin-astro@0.14.1:
-    resolution: {integrity: sha512-RiBETaaP9veVstE4vUwSIcdATj6dKmXljouXc/DDNwBSPTp8FRkLGDSGFClKsAFeeg+13SB0Z1JZvbD76bigJw==}
-    engines: {node: ^14.15.0 || >=16.0.0}
+  prettier-plugin-astro@1.1.2:
+    resolution: {integrity: sha512-vKyJW7Bb/QcIPUebEehbG+Tn+3yTIhoJ8ecm6NyJgcOj5T2xP+eF1IxY4zv809YyA69nV4ZFj+H9mdpC5cTaQA==}
+    engines: {node: '>=22.12.0'}
+    peerDependencies:
+      prettier: ^3.5.3
 
   prettier@3.10.1:
     resolution: {integrity: sha512-70vp3ZUYoPlFbF9uiTdXHUUCGEIp7d4+6p+8DYbkm2jP7x/3i/paXVF6dopSI3zd/CEitrZN1rc4i85xWmmXlg==}
@@ -2510,8 +2516,9 @@ packages:
     resolution: {integrity: sha512-x/+Cz4YrimQxQccJf5mKEbIa1NzeCRNI5Ecl/ekmlYaampdNLPalVyIcCZNNH3MvmqBugV5TMYZXv0ljslUlaw==}
     engines: {node: '>= 0.4'}
 
-  sass-formatter@0.7.9:
-    resolution: {integrity: sha512-CWZ8XiSim+fJVG0cFLStwDvft1VI7uvXdCNJYXhDvowiv+DsbD1nXLiQ4zrE5UBvj5DWZJ93cwN0NX5PMsr1Pw==}
+  sass-formatter@0.8.0:
+    resolution: {integrity: sha512-Nf4eMGE2O5vnJG7KPCRyksWS9gVKSYoUWtPeMXRRxwZSPVQhSGtL602xVYS65LvMkHmkvKa7xpauF0+/5pPwrg==}
+    hasBin: true
 
   satteri@0.11.7:
     resolution: {integrity: sha512-xDOSxkc1ew3z3IovIjmsqJaVHRXTGYJkPvx0LL/U6o90km8kSU+pmrZVvnWd5creJeE0UnvMEienlkPuYQdJaA==}
@@ -3071,9 +3078,9 @@ snapshots:
       '@emnapi/runtime': 1.11.3
       '@napi-rs/wasm-runtime': 1.2.4(@emnapi/core@1.11.3)(@emnapi/runtime@1.11.3)
 
-  '@astrojs/check@0.9.12(prettier-plugin-astro@0.14.1)(prettier@3.10.1)(typescript@6.0.3)':
+  '@astrojs/check@0.9.12(prettier-plugin-astro@1.1.2(prettier@3.10.1))(prettier@3.10.1)(typescript@6.0.3)':
     dependencies:
-      '@astrojs/language-server': 2.17.3(prettier-plugin-astro@0.14.1)(prettier@3.10.1)(typescript@6.0.3)
+      '@astrojs/language-server': 2.17.3(prettier-plugin-astro@1.1.2(prettier@3.10.1))(prettier@3.10.1)(typescript@6.0.3)
       chokidar: 5.0.0
       kleur: 4.1.5
       typescript: 6.0.3
@@ -3133,8 +3140,6 @@ snapshots:
     dependencies:
       '@astrojs/compiler-binding': 0.5.3
 
-  '@astrojs/compiler@2.13.1': {}
-
   '@astrojs/compiler@4.0.0': {}
 
   '@astrojs/internal-helpers@0.13.2':
@@ -3148,7 +3153,7 @@ snapshots:
       unified: 11.0.5
       yaml: 2.9.1
 
-  '@astrojs/language-server@2.17.3(prettier-plugin-astro@0.14.1)(prettier@3.10.1)(typescript@6.0.3)':
+  '@astrojs/language-server@2.17.3(prettier-plugin-astro@1.1.2(prettier@3.10.1))(prettier@3.10.1)(typescript@6.0.3)':
     dependencies:
       '@astrojs/astro2tsx': 0.1.4
       '@astrojs/yaml2ts': 0.2.4
@@ -3169,7 +3174,7 @@ snapshots:
       vscode-uri: 3.2.0
     optionalDependencies:
       prettier: 3.10.1
-      prettier-plugin-astro: 0.14.1
+      prettier-plugin-astro: 1.1.2(prettier@3.10.1)
     transitivePeerDependencies:
       - typescript
 
@@ -3775,6 +3780,8 @@ snapshots:
 
   '@pkgr/core@0.3.6': {}
 
+  '@prettier/parse-srcset@3.1.0': {}
+
   '@rolldown/binding-android-arm-eabi@1.2.19':
     optional: true
 
@@ -4033,7 +4040,7 @@ snapshots:
       '@typescript-eslint/types': 8.73.0
       '@typescript-eslint/visitor-keys': 8.73.0
       debug: 4.4.3
-      minimatch: 11.0.9
+      minimatch: 11.0.8
       semver: 7.8.6
       tinyglobby: 0.2.17
       ts-api-utils: 2.5.0(typescript@6.0.3)
@@ -4160,7 +4167,7 @@ snapshots:
 
   argparse@2.0.1: {}
 
-  argue-cli@3.2.1: {}
+  argue-cli@3.2.0: {}
 
   aria-query@5.3.2: {}
 
@@ -4411,7 +4418,7 @@ snapshots:
   conventional-commits-parser@7.1.4:
     dependencies:
       '@simple-libs/stream-utils': 2.0.0
-      argue-cli: 3.2.1
+      argue-cli: 3.2.0
 
   cookie-es@1.2.3: {}
 
@@ -5290,6 +5297,11 @@ snapshots:
 
   micromark-util-types@2.0.3: {}
 
+  minimatch@11.0.8:
+    dependencies:
+      '@isaacs/nonrecursive-glob-match': 1.1.0
+      brace-expansion: 5.0.13
+
   minimatch@11.0.9:
     dependencies:
       '@isaacs/nonrecursive-glob-match': 1.1.0
@@ -5454,11 +5466,12 @@ snapshots:
 
   prelude-ls@1.2.1: {}
 
-  prettier-plugin-astro@0.14.1:
+  prettier-plugin-astro@1.1.2(prettier@3.10.1):
     dependencies:
-      '@astrojs/compiler': 2.13.1
+      '@astrojs/compiler-rs': 0.5.3
+      '@prettier/parse-srcset': 3.1.0
       prettier: 3.10.1
-      sass-formatter: 0.7.9
+      sass-formatter: 0.8.0
 
   prettier@3.10.1: {}
 
@@ -5596,7 +5609,7 @@ snapshots:
       es-errors: 1.3.0
       is-regex: 1.2.1
 
-  sass-formatter@0.7.9:
+  sass-formatter@0.8.0:
     dependencies:
       suf-log: 2.5.3
 
