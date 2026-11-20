@@ -5,21 +5,39 @@ import { SEO } from "astro-seo";
 interface Props {
   title?: string;
   description?: string;
+  noindex?: boolean;
 }
 
+// Site identity: replace these when adopting the starter.
 const DEFAULT_TITLE = "Astro Starter";
+const DEFAULT_DESCRIPTION =
+  "SEO-optimized Astro starter with typed env config, sitemap and social cards.";
+const AUTHOR = "Ali Piry";
+const TWITTER_HANDLE = "@alipiry";
 
 const siteUrl = SITE_URL;
-const allowIndexing = APP_ENV === "production";
-const robotsContent = allowIndexing ? "index, follow" : "noindex, nofollow";
+const {
+  title,
+  description = DEFAULT_DESCRIPTION,
+  noindex = false,
+} = Astro.props;
 
-const { title, description = DEFAULT_TITLE } = Astro.props;
+const allowIndexing = APP_ENV === "production" && !noindex;
+const robotsContent = allowIndexing ? "index, follow" : "noindex, nofollow";
 
 const isIndexPage = Astro.url.pathname === "/";
 
 const pageTitle = isIndexPage ? DEFAULT_TITLE : title || DEFAULT_TITLE;
 const titleTemplate = isIndexPage ? "%s" : `%s | ${DEFAULT_TITLE}`;
 const canonicalUrl = new URL(Astro.url.pathname, siteUrl).toString();
+
+// "<" escaped so a title containing "</script>" cannot break out of the tag.
+const jsonLd = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: DEFAULT_TITLE,
+  url: siteUrl,
+}).replace(/</g, "\\u003c");
 ---
 
 <!doctype html>
@@ -37,7 +55,7 @@ const canonicalUrl = new URL(Astro.url.pathname, siteUrl).toString();
       nofollow={!allowIndexing}
       openGraph={{
         basic: {
-          title: title || DEFAULT_TITLE,
+          title: pageTitle,
           type: "website",
           image: `${siteUrl}/og.png`,
           url: canonicalUrl,
@@ -56,16 +74,16 @@ const canonicalUrl = new URL(Astro.url.pathname, siteUrl).toString();
       }}
       twitter={{
         card: "summary_large_image",
-        site: "@alipiry",
-        creator: "@alipiry",
-        title: title || DEFAULT_TITLE,
+        site: TWITTER_HANDLE,
+        creator: TWITTER_HANDLE,
+        title: pageTitle,
         description,
         image: `${siteUrl}/og.png`,
         imageAlt: DEFAULT_TITLE,
       }}
       extend={{
         meta: [
-          { name: "author", content: "Ali Piry" },
+          { name: "author", content: AUTHOR },
           {
             name: "keywords",
             content:
@@ -103,24 +121,16 @@ const canonicalUrl = new URL(Astro.url.pathname, siteUrl).toString();
             type: "image/x-icon",
             href: "/favicon.ico",
           },
-          {
-            rel: "icon",
-            type: "image/png",
-            sizes: "192x192",
-            href: "/android-chrome-192x192.png",
-          },
-          {
-            rel: "icon",
-            type: "image/png",
-            sizes: "512x512",
-            href: "/android-chrome-512x512.png",
-          },
+          { rel: "manifest", href: "/site.webmanifest" },
         ],
       }}
     />
     <link rel="sitemap" href="/sitemap-index.xml" />
+    <script type="application/ld+json" set:html={jsonLd} />
   </head>
   <body>
+    <!-- Target: give your page's <main> id="main". -->
+    <a class="skip-link" href="#main">Skip to content</a>
     <slot />
   </body>
 </html>
@@ -131,5 +141,19 @@ const canonicalUrl = new URL(Astro.url.pathname, siteUrl).toString();
     margin: 0;
     width: 100%;
     height: 100%;
+  }
+
+  .skip-link {
+    position: absolute;
+    left: 0.5rem;
+    top: -4rem;
+    padding: 0.5rem 1rem;
+    background: #fff;
+    color: #000;
+    z-index: 10;
+  }
+
+  .skip-link:focus {
+    top: 0.5rem;
   }
 </style>
